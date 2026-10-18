@@ -2,11 +2,48 @@
   "name": "@actualwave/rn-playground-net",
   "version": "0.1.0",
   "description": "Sockets, HTTP/WebSocket servers, router and static files for React Native (Hermes) — Uint8Array and promises, no Node streams.",
+  "author": "Oleg Galaburda <burdiuz@gmail.com>",
+  "homepage": "https://github.com/burdiuz/rn-playground-net",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burdiuz/rn-playground-net.git"
+  },
+  "bugs": {
+    "url": "https://github.com/burdiuz/rn-playground-net/issues"
+  },
+  "keywords": [
+    "react-native",
+    "android",
+    "playground",
+    "networking",
+    "tcp",
+    "udp",
+    "sockets",
+    "http",
+    "http-server",
+    "websocket",
+    "router",
+    "static-files",
+    "hermes",
+    "expo",
+    "uint8array"
+  ],
   "type": "module",
-  "main": "index.js",
+  "main": "index.cjs",
   "module": "index.es.js",
   "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./index.es.js",
+      "require": "./index.cjs",
+      "default": "./index.es.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "rollup -c rollup.config.js",
     "test": "jest"
   },
@@ -17,9 +54,15 @@
     "react-native-udp": "*"
   },
   "peerDependenciesMeta": {
-    "expo-file-system": { "optional": true },
-    "react-native-tcp-socket": { "optional": true },
-    "react-native-udp": { "optional": true }
+    "expo-file-system": {
+      "optional": true
+    },
+    "react-native-tcp-socket": {
+      "optional": true
+    },
+    "react-native-udp": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
@@ -31,5 +74,8 @@
     "ts-jest": "^29.1.5",
     "tslib": "^2.8.1",
     "typescript": "^5.4.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
